@@ -5,16 +5,16 @@ public class tribonacci {
 
 
     public double[] tribonacci(double[] s, int n) {
-        if (n < 1) {
-            return new double[0];
+        double[] signature = new double[]{s[0], s[1], s[2]};
+        if (n < 3) {
+            double[] result = new double[n];
+            System.arraycopy(signature, 0, result, 0, n);
+            return result;
         }
         double[] result = new double[n];
-        result[0] = s[0];
-        result[1] = s[1];
-        result[2] = s[2];
-
-        for (int i = 0; i < n - 3; i++) {
-            result[i+3] = result[i] + result[i+1] + result[i+2]; 
+        System.arraycopy(signature, 0, result, 0, 3);
+        for (int i = 3; i < n; i++) {
+            result[i] = result[i - 1] + result[i - 2] + result[i - 3];
         }
         return result;
     }
